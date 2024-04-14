@@ -114,7 +114,7 @@
                         $dbName = getenv('DB_NAME');
 
                         // Attempt to connect to the database
-                      // $link = mysqli_connect($dbHost, $dbUser, $dbPassword, $dbName);
+                        // $link = mysqli_connect($dbHost, $dbUser, $dbPassword, $dbName);
 
                         if ($link) {
                         $res = mysqli_query($link, "select * from products;");
