@@ -1,5 +1,5 @@
 FROM nginx
-RUN apt update -y &&  apt install php8.2-fpm -y
+RUN apt update -y &&  apt install php8.2-fpm -y && apt install php-mysql -y
 RUN apt install sudo
 RUN sudo usermod -aG www-data nginx
 COPY .  /usr/share/nginx/html
