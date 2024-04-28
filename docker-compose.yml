@@ -8,6 +8,8 @@ services:
       MYSQL_DATABASE: ecomdb
       MYSQL_USER: ecomuser
       MYSQL_PASSWORD: ecompassword
+    volumes:
+      - db_data:/var/lib/mysql
     networks:
       - ecom_network
   ecom-web:
@@ -19,7 +21,7 @@ services:
     ports:
       - 8080:80
     environment:
-      DB_SERVER: ecom-mysql
+      DB_SERVER: ecom-mysql2
       DB_NAME: ecomdb
       DB_USER: ecomuser
       DB_PASSWD: ecompassword
@@ -27,3 +29,5 @@ services:
       - ecom_network
 networks:
     ecom_network:
+volumes:
+  db_data:
