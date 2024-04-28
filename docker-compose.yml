@@ -1,0 +1,30 @@
+  GNU nano 4.8                                                       docker-compose.yml                                                                  
+services:
+  mysql:
+    container_name: ecom-mysql2
+    image: mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpw
+      MYSQL_DATABASE: ecomdb
+      MYSQL_USER: ecomuser
+      MYSQL_PASSWORD: ecompassword
+    networks:
+      - ecom_network
+  ecom-web:
+    container_name: ecom-web2
+    image: adiq2021/ecom-web-4m-dockerfile:v1
+    restart: unless-stopped
+    depends_on:
+      - mysql
+    ports:
+      - 8080:80
+    environment:
+      DB_SERVER: ecom-mysql
+      DB_NAME: ecomdb
+      DB_USER: ecomuser
+      DB_PASSWD: ecompassword
+    networks:
+      - ecom_network
+networks:
+    ecom_network:
